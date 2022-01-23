@@ -1,0 +1,351 @@
+cn-multiselect {
+  /** BASE **/
+  --cn-multiselect-font: 'Roboto';
+  --cn-multiselect-font-size: 16px;
+  --cn-multiselect-border-color: #026ed8;
+  --cn-multiselect-border-color: ;
+  --cn-multiselect-border-size: 1px;
+  --cn-multiselect-border-radius: 0px;
+
+  /** SELECTED OPTION **/
+  --cn-background-color-selected-option: #026ed8;
+  --cn-border-color-selected-option: #026ed8;
+  --cn-color-selected-option: #FFFFFF;
+
+
+  --cn-colot-text-placeholder: #000000;
+  --cn-color-text-option: #000000;
+  --cn-color-text-search: #000000;
+
+  /** CHECBOX OPTION **/
+  --cn-border-color-checkbox: #ccc;
+
+  /** CHECBOX OPTION SELECTED **/
+  --cn-background-color-selected-checkbox: #026ed8;
+  --cn-border-color-selected-checkbox: #026ed8;
+
+
+}
+
+cn-multiselect div{
+  margin: 0px;
+  padding: 0px;
+}
+
+cn-multiselect .cn-multiselect-wrapper{
+  border-radius: var(--cn-multiselect-border-radius);
+  margin: 0;
+  border: var(--cn-multiselect-border-size) solid var(--cn-multiselect-border-color);
+  min-height: 30px;
+  height: auto;
+  padding: 5px;
+  font-size: var(--cn-multiselect-font-size);
+  font-family: var(--cn-multiselect-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+}
+cn-multiselect .selected-options{
+  display: flex;
+  cursor: pointer;
+  flex-wrap: wrap;
+  height: auto;
+
+}
+
+cn-multiselect .selected-options .cn-no-values{
+ color: var(--cn-colot-text-placeholder);
+
+}
+
+
+cn-multiselect .cn-option-selected{
+
+  border: var(--cn-multiselect-border-size) solid var(--cn-border-color-selected-option);
+  padding: 1px 25px 1px 3px;
+  border-radius: 4px;
+  background-color: var(--cn-background-color-selected-option);
+  color: var(--cn-color-selected-option);
+  margin-right: 3px;
+  margin-top: 2px;
+  position: relative;
+
+}
+
+
+
+
+cn-multiselect .cn-option-selected .btn-delete{
+  cursor: pointer;
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+  width: 1em;
+  height: 1em;
+  opacity: 0.3;
+}
+cn-multiselect .cn-option-selected .btn-delete:hover{
+  opacity: 1;
+}
+cn-multiselect .cn-option-selected .btn-delete::before,
+cn-multiselect .cn-option-selected .btn-delete::after{
+  content: " ";
+  position: absolute;
+  left: 0.5em;
+  width: 2px;
+  height: 1em;
+  background-color: var(--cn-color-selected-option);
+
+}
+cn-multiselect .cn-option-selected .btn-delete::after{
+  transform: rotate(-45deg);
+}
+cn-multiselect .cn-option-selected .btn-delete::before{
+  transform: rotate(45deg);
+}
+cn-multiselect .cn-multiselect-wrapper.disabled .selected-options{
+  cursor:default;
+}
+
+
+cn-multiselect .cn-multiselect-wrapper.disabled .cn-option-selected .btn-delete{
+  display: none;
+}
+
+
+cn-multiselect .cn-multiselect-wrapper .container-options{
+  position: relative;
+  width: calc(100% + 10px);
+  margin: 0;
+  padding: 0;
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .search span{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: var(--cn-multiselect-border-radius);
+  border: var(--cn-multiselect-border-size) solid var(--cn-multiselect-border-color);
+  height: 25px;
+  margin-bottom: 10px;
+}
+cn-multiselect .cn-multiselect-wrapper .options .search .search-delete{
+  position: relative;
+}
+cn-multiselect .cn-multiselect-wrapper .options .search .search-delete::before,
+cn-multiselect .cn-multiselect-wrapper .options .search .search-delete::after{
+  content: " ";
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  top: -10px;
+  right: -10px;
+  background-color: var(--cn-color-text-search);
+  opacity: 0.3;
+
+}
+cn-multiselect .cn-multiselect-wrapper .options .search .search-delete::after{
+  transform: rotate(-45deg);
+}
+cn-multiselect .cn-multiselect-wrapper .options .search .search-delete::before{
+  transform: rotate(45deg);
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .search .search-delete.active::before,
+cn-multiselect .cn-multiselect-wrapper .options .search .search-delete.active::after{
+  opacity: 1;
+  cursor: pointer;
+}
+
+
+cn-multiselect .cn-multiselect-wrapper .options .search input{
+  width: calc(100% - 30px);
+  height: 20px;
+  border: none;
+  padding: 0px 4px;
+  color: var(--cn-color-text-search);
+}
+cn-multiselect .cn-multiselect-wrapper .options .search input:focus{
+  outline: none;
+}
+
+
+cn-multiselect .cn-multiselect-wrapper .options{
+  border-radius: var(--cn-multiselect-border-radius);
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  width: calc(100% - 20px);
+  background-color: #FFFF;
+  border: var(--cn-multiselect-border-size) solid var(--cn-multiselect-border-color);
+  padding: 5px 10px;
+  height: 0px;
+  visibility: hidden;
+}
+cn-multiselect .cn-multiselect-wrapper .options.open{
+  height: auto;
+  visibility: visible;
+}
+cn-multiselect .cn-multiselect-wrapper .options .option{
+  min-height: 30px;
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .content-options{
+  position: relative;
+}
+cn-multiselect .cn-multiselect-wrapper .options .content-options .search{
+  position: absolute;
+  top: -35px;
+  left: 0px;
+  width: 100%;
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .content-options .options-list{
+  margin-top: 35px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .content-options .options-list.no-search{
+  margin-top: 0px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox {
+  z-index: 0;
+  position: relative;
+  display: inline-block;
+  color: var(--cn-color-text-option);
+  line-height: 1.5;
+}
+
+/* Input */
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  z-index: -1;
+  position: absolute;
+  left: -10px;
+  top: -8px;
+  display: block;
+  margin: 0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: var(--cn-background-color-checkbox);
+  box-shadow: none;
+  outline: none;
+  opacity: 0;
+  transform: scale(1);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.2s;
+}
+
+/* Span */
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > span {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Box */
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > span::before {
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 3px 11px 3px 1px;
+  border: solid 2px; /* Safari */
+  border-color: var(--cn-border-color-checkbox);
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+  vertical-align: top;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Checkmark */
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 1px;
+  width: 10px;
+  height: 5px;
+  border: solid 2px transparent;
+  border-right: none;
+  border-top: none;
+  transform: translate(3px, 4px) rotate(-45deg);
+}
+
+/* Checked, Indeterminate */
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:checked,
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:indeterminate {
+  background-color: var(--cn-background-color-selected-checkbox);
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:checked + span::before,
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:indeterminate + span::before {
+  border-color: var(--cn-border-color-selected-checkbox);
+  background-color: var(--cn-background-color-selected-checkbox);
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:checked + span::after,
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:indeterminate + span::after {
+  border-color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:indeterminate + span::after {
+  border-left: none;
+  transform: translate(4px, 3px);
+}
+
+/* Hover, Focus */
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox:hover > input {
+  opacity: 0.04;
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:focus {
+  opacity: 0.12;
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox:hover > input:focus {
+  opacity: 0.16;
+}
+
+/* Active */
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:active {
+  opacity: 1;
+  transform: scale(0);
+  transition: transform 0s, opacity 0s;
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:active + span::before {
+  border-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:checked:active + span::before {
+  border-color: transparent;
+  background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
+}
+
+/* Disabled */
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:disabled {
+  opacity: 0;
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:disabled + span {
+  color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+  cursor: initial;
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:disabled + span::before {
+  border-color: currentColor;
+}
+
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:checked:disabled + span::before,
+cn-multiselect .cn-multiselect-wrapper .options .option .pure-material-checkbox > input:indeterminate:disabled + span::before {
+  border-color: transparent;
+  background-color: currentColor;
+}
